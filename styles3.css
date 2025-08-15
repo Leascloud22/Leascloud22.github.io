@@ -1,0 +1,165 @@
+:root{
+  --rose-50:#fff1f7;
+  --rose-100:#ffe4ee;
+  --rose-200:#ffc9dd;
+  --rose-300:#ff9ec0;
+  --rose-400:#ff6ea1;
+  --rose-500:#ff4f90;
+  --rose-600:#e93a7b;
+  --rose-700:#c62566;
+  --ink:#6b2a3d;
+  --white:#ffffff;
+  --shadow: 0 10px 30px rgba(203, 25, 93, .15);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(20px 20px at 20px 20px, rgba(255,255,255,.25) 25%, transparent 26%) 0 0 / 40px 40px,
+    linear-gradient(135deg, var(--rose-50), var(--rose-100) 35%, var(--rose-200));
+}
+
+.topbar{
+  text-align:center;
+  padding:28px 16px 10px;
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+}
+
+.brand h1{
+  margin:0;
+  font-weight:800;
+  letter-spacing:.3px;
+  font-size:clamp(1.4rem, 2.2vw + 1rem, 2.4rem);
+  color:var(--rose-700);
+  text-shadow: 0 1px 0 var(--white);
+}
+
+.heart{
+  width:36px;
+  height:36px;
+  fill:var(--rose-600);
+  filter: drop-shadow(0 6px 10px rgba(233,58,123,.3));
+  transform: translateY(2px);
+}
+
+.subtitle{
+  margin:4px 0 0;
+  color:#8a3b53;
+}
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px 16px 60px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap:14px;
+}
+
+@media (min-width:520px){
+  .gallery{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width:820px){
+  .gallery{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width:1100px){
+  .gallery{ grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Tarjetas */
+.card{
+  position:relative;
+  display:block;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--white);
+  box-shadow: var(--shadow);
+  transform-origin:center;
+  transition: transform .25s ease, box-shadow .25s ease;
+  outline: none;
+}
+.card:hover{ transform: translateY(-4px) scale(1.01); box-shadow: 0 14px 40px rgba(233,58,123,.18); }
+
+.card img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  aspect-ratio: 3 / 4;
+  filter: saturate(1.05) contrast(1.02);
+  transition: transform .5s ease;
+}
+.card:hover img{ transform: scale(1.04); }
+
+.badge{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  background:linear-gradient(135deg, var(--rose-500), var(--rose-700));
+  color:white;
+  padding:6px 9px;
+  font-weight:800;
+  border-radius:999px;
+  font-size:.85rem;
+  box-shadow: 0 8px 18px rgba(233,58,123,.35);
+  transform: rotate(-10deg);
+  user-select:none;
+}
+
+/* Lightbox (solo CSS con :target) */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(15,0,10,.75);
+  backdrop-filter: blur(4px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:1000;
+}
+.lightbox:target{ display:flex; animation: fadeIn .25s ease; }
+
+.lightbox img{
+  max-width:min(100%, 1100px);
+  max-height:80vh;
+  border-radius:20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.lightbox .close{
+  position:absolute;
+  inset:0;
+  cursor: zoom-out;
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:20px 16px 40px;
+  color:#a5546e;
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; } to{ opacity:1; }
+}
+
+/* Accesibilidad: foco visible */
+.card:focus{
+  box-shadow: 0 0 0 4px rgba(233,58,123,.35), var(--shadow);
+  transform: translateY(-2px);
+}
