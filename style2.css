@@ -244,19 +244,20 @@ button:hover {
 }
 
 }
-/* Banner animado */
+
 .love-banner {
     position: relative;
     background: linear-gradient(180deg, #ffb6c1, #ffc1d1);
-    padding: 25px;
+    padding: 50px 20px; /* Más alto */
     text-align: center;
     overflow: hidden;
     border-bottom: 2px solid var(--heart-color);
 }
+
 .love-banner h1 {
     margin: 0;
     font-family: 'Marck Script', cursive;
-    font-size: 2.2rem;
+    font-size: 3rem; /* Más grande */
     color: #b30059;
     z-index: 1;
     position: relative;
@@ -268,6 +269,7 @@ button:hover {
     inset: 0;
     pointer-events: none;
 }
+
 .hearts span {
     --x: 10%;
     --delay: 0s;
@@ -275,24 +277,26 @@ button:hover {
     position: absolute;
     left: var(--x);
     bottom: -30px;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     background: var(--heart-color);
     transform: rotate(45deg);
     animation: floatUp var(--duration) linear var(--delay) infinite;
     opacity: 0.6;
 }
+
 .hearts span::before,
 .hearts span::after {
     content: '';
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     background: var(--heart-color);
     border-radius: 50%;
 }
-.hearts span::before { left: -7.5px; top: 0; }
-.hearts span::after { left: 0; top: -7.5px; }
+
+.hearts span::before { left: -9px; top: 0; }
+.hearts span::after { left: 0; top: -9px; }
 
 /* Variantes de posición y tiempo */
 .hearts span:nth-child(1){ --x:5%;  --delay:0s;   --duration:12s; }
@@ -310,9 +314,32 @@ button:hover {
     0%   { transform: translateY(0) rotate(45deg) scale(.8); opacity:.4; }
     30%  { opacity: 0.7; }
     60%  { transform: translateY(-60vh) rotate(45deg) scale(1.1); opacity:.3; }
-    100% { transform: translateY(-95vh) rotate(45deg) scale(1.15); opacity:0; }
+    100% { transform: translateY(-100vh) rotate(45deg) scale(1.15); opacity:0; }
 }
 
+/* Ajustes para móviles */
+@media screen and (max-width: 480px) {
+    .love-banner {
+        padding: 35px 15px;
+    }
+
+    .love-banner h1 {
+        font-size: 2rem;
+    }
+
+    .hearts span {
+        width: 12px;
+        height: 12px;
+    }
+
+    .hearts span::before,
+    .hearts span::after {
+        width: 12px;
+        height: 12px;
+        left: -6px;
+        top: 0;
+    }
+}
 
 
 
