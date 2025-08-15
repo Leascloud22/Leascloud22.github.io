@@ -244,6 +244,74 @@ button:hover {
 }
 
 }
+/* Banner animado */
+.love-banner {
+    position: relative;
+    background: linear-gradient(180deg, #ffb6c1, #ffc1d1);
+    padding: 25px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 2px solid var(--heart-color);
+}
+.love-banner h1 {
+    margin: 0;
+    font-family: 'Marck Script', cursive;
+    font-size: 2.2rem;
+    color: #b30059;
+    z-index: 1;
+    position: relative;
+}
+
+/* Contenedor de corazones */
+.hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.hearts span {
+    --x: 10%;
+    --delay: 0s;
+    --duration: 10s;
+    position: absolute;
+    left: var(--x);
+    bottom: -30px;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    transform: rotate(45deg);
+    animation: floatUp var(--duration) linear var(--delay) infinite;
+    opacity: 0.6;
+}
+.hearts span::before,
+.hearts span::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    border-radius: 50%;
+}
+.hearts span::before { left: -7.5px; top: 0; }
+.hearts span::after { left: 0; top: -7.5px; }
+
+/* Variantes de posición y tiempo */
+.hearts span:nth-child(1){ --x:5%;  --delay:0s;   --duration:12s; }
+.hearts span:nth-child(2){ --x:15%; --delay:1.2s; --duration:10s; }
+.hearts span:nth-child(3){ --x:28%; --delay:.6s;  --duration:11s; }
+.hearts span:nth-child(4){ --x:40%; --delay:2s;   --duration:9s;  }
+.hearts span:nth-child(5){ --x:52%; --delay:.9s;  --duration:13s; }
+.hearts span:nth-child(6){ --x:64%; --delay:1.7s; --duration:10.5s; }
+.hearts span:nth-child(7){ --x:73%; --delay:.3s;  --duration:12.5s; }
+.hearts span:nth-child(8){ --x:82%; --delay:1.4s; --duration:9.5s; }
+.hearts span:nth-child(9){ --x:90%; --delay:.8s;  --duration:11.2s; }
+.hearts span:nth-child(10){--x:50%; --delay:2.6s; --duration:14s; }
+
+@keyframes floatUp {
+    0%   { transform: translateY(0) rotate(45deg) scale(.8); opacity:.4; }
+    30%  { opacity: 0.7; }
+    60%  { transform: translateY(-60vh) rotate(45deg) scale(1.1); opacity:.3; }
+    100% { transform: translateY(-95vh) rotate(45deg) scale(1.15); opacity:0; }
+}
 
 
 
